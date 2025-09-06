@@ -1,11 +1,9 @@
-from stats import word_count
-from stats import char_count
-from stats import char_sort
+import sys
+from stats import word_count, char_count, char_sort
+
 
 def main():
-    book_text = get_book_text("books/frankenstein.txt")
-    #print(f"{word_count(book_text)} words found in the document")
-    #print(char_count(book_text))
+    book_text = get_book_text(sys.argv[1])
     count = char_count(book_text)
     sorted = char_sort(count)
 
@@ -23,5 +21,8 @@ def main():
 def get_book_text(book_file_path):
     with open(book_file_path) as book:
         return book.read()
-   
-main()
+try:   
+    main()
+except Exception as e:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
