@@ -9,4 +9,16 @@ def char_count(book_text):
             chars[char] += 1
         else:
             chars[char] = 1
-    return chars    
+    return chars
+
+def char_sort(char_dict):
+    sorted_chars = []
+    for char in char_dict:
+        sorted_chars.append(
+            {"char": char, "num": char_dict[char]}
+        )
+    sorted_chars.sort(reverse=True, key=sort_on)
+    return sorted_chars
+
+def sort_on(chars):
+    return chars["num"]
